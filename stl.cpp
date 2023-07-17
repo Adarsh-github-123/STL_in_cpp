@@ -4,6 +4,8 @@
 #include <list>
 #include <stack>
 #include <queue>
+#include <set>
+#include <map>
 
 using namespace std;
 
@@ -88,4 +90,109 @@ int main()
 
     q.pop();
     cout << q.size() << endl;
+
+    /****************************************   PRIORITY QUEUE OPERATIONS   *******************************************/
+
+    priority_queue<int> maxi;                            // max heap
+    priority_queue<int, vector<int>, greater<int>> mini; // mini heap
+
+    maxi.push(1);
+    maxi.push(3);
+    maxi.push(0);
+    maxi.push(2);
+
+    cout << "size -> " << maxi.size() << endl;
+
+    // int n = maxi.size();
+
+    for (int i = 0; i < maxi.size(); i++)
+    {
+        cout << maxi.top() << " ";
+        maxi.pop();
+    }
+    cout << endl;
+
+    mini.push(5);
+    mini.push(3);
+    mini.push(2);
+    mini.push(1);
+
+    int m = mini.size();
+    for (int i = 0; i < m; i++)
+    {
+        cout << mini.top() << " ";
+        mini.pop();
+    }
+    cout << endl;
+
+    cout << " Empty : " << mini.empty() << endl;
+
+    /********************************************   SET OPERATIONS   *************************************************/
+
+    set<int> st;
+    st.insert(5);
+    st.insert(4);
+    st.insert(3);
+    st.insert(2);
+    st.insert(0);
+
+    for (auto i : st)
+    {
+        cout << i << endl;
+    }
+    cout << endl;
+
+    set<int>::iterator it = st.begin();
+    it++;
+
+    st.erase(it);
+    for (auto i : st)
+    {
+        cout << endl;
+    }
+    cout << endl;
+
+    cout << "-5 is present or not -> " << st.count(-5) << endl;
+
+    set<int>::iterator itr = st.find(5);
+
+    for (auto it = itr; it != st.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    /**********************************************  MAP OPERATIONS   *************************************************/
+
+    map<int, string> mp;
+
+    mp[1] = "Adarsh";
+    mp[12] = "Sharma";
+    mp[2] = "Hello";
+
+    mp.insert({5, "bheem"});
+
+    cout << "Before erase " << endl;
+    for (auto i : mp)
+    {
+        cout << i.first << " " << i.second << endl;
+    }
+
+    cout << "finding -13 -> " << mp.count(-13) << endl;
+    mp.erase(13);
+
+    cout << "After erase: " << endl;
+
+    for (auto i : mp)
+    {
+        cout << i.first << " " << i.second << endl;
+    }
+    cout << endl;
+
+    auto itt = mp.find(5);
+
+    for (auto i = itt; i != mp.end(); i++)
+    {
+        cout << (*i).first << endl;
+    }
 }
